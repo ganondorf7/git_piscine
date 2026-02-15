@@ -1,37 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_recursive_factorial.c                           :+:      :+:    :+:   */
+/*   ft_recursive_power.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: trosado- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/12 16:40:42 by trosado-          #+#    #+#             */
-/*   Updated: 2026/02/14 14:44:33 by trosado-         ###   ########.fr       */
+/*   Created: 2026/02/15 20:46:52 by trosado-          #+#    #+#             */
+/*   Updated: 2026/02/15 21:43:21 by trosado-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
-int	ft_recursive_factorial(int nb)
+int ft_recursive_power(int nb, int power)
 {
-	if (nb == 1)
+	if (power == 0)
 		return (1);
-	if (nb < 0)
-		return (0);
-	if (nb > 1)
-		return (nb * ft_recursive_factorial(nb -1));
-	else
-		return (1);
+	if (power == 1)
+		return (nb);
+	while (power > 1)
+	{
+		nb = nb * nb;
+		return (ft_recursive_power(nb, (power - 1)));
+	}
+return (0);
 }
-/*
 #include <stdio.h>
+
+
 int	main()
 {
-	int i = 7;
-	while (i >= 0)
-	{
-		printf("%d\n", i , ft_recursive_factorial(i));
-		i--;
-	}
-	return(0);
-}*/
+	int nb;
+	int power;
+	nb = 0;
+	power = 0;
+	
+	printf("%d to the power of %d id %d", nb , power, ft_recursive_power(nb, power) );
+	return 0;
+}
